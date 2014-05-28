@@ -1,6 +1,8 @@
 # basic task list script
 # currently python 2.7
-# 0.3 - changed to make tasks a dictionary with the key being the task name and the value being the date
+# next prioritised changes - add file handling for data persistence, adjust style and flow to be object oriented
+# 0.4 - main control flow moved to a function call, changed ifs to use boolean value of list
+# 0.3 - tasks changed from a list to dictionary, task name: todays date
 # 0.2 - option to remove tasks
 # 0.1 - formatting and consistency updates
 # 0.0 - basic list input
@@ -14,17 +16,15 @@ print '*' * 15
 tasks = {}
 user_input = ""
 
-while user_input != 'e':
-	print '-' * 15
-	user_input = raw_input("Press 'n' to add a new task, 'd' to delete a task, 'l' to list tasks or 'e' to exit\n..:")
+def script_response(user_input):
+	"""takes in a string used to determine a control flow
+		of output responses"""
 	if user_input == 'n':
 		user_input = raw_input("Enter the task: ")
 		tasks[user_input] = date.today()
 		print "Task", user_input, "added to task list\n"
 	elif user_input == 'd':
-		if len(tasks) == 0:
-			print "No Tasks in list"
-		else:
+		if tasks:
 			print "Current Tasks:\n",tasks
 			user_input = raw_input("Task to delete: ")
 			if user_input not in tasks:
@@ -32,15 +32,22 @@ while user_input != 'e':
 			else:
 				del tasks[user_input]
 				print user_input, "removed from tasks."
-	elif user_input == 'l':
-		if len(tasks) == 0:
-			print "No Tasks in list"
 		else:
+			print "No Tasks in list"
+	elif user_input == 'l':
+		if tasks:
 			print tasks
+		else:
+			print "No Tasks in list"
 	elif user_input == 'e':
 		exit
 	else:
 		print "Invalid input, try again"
 
+while user_input != 'e':
+	print '-' * 15
+	print "Instructions:"
+	user_input = raw_input("Press 'l' to list tasks, n' to add new, 'd' to delete or 'e' to exit\n.:")
+	script_response(user_input)
 
 
