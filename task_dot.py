@@ -1,18 +1,26 @@
 # basic task list script
 # currently python 2.7
+# revision 0.7
 
 from datetime import date
 import pickle
+import os
 
 print
 print '*' * 15
 print "Task List Manager"
 print '*' * 15
 
-#import saved task list from file, create if doesn't exits
-pkl_file = open('myfile.pkl', 'rb+')
-tasks = pickle.load(pkl_file) 
-pkl_file.close()
+#test if file exists, if so import data
+if os.path.isfile("myfile.pkl"):
+	try:
+		pkl_file = open('myfile.pkl', 'rb')
+		tasks = pickle.load(pkl_file) 
+		pkl_file.close()
+	except OSError:
+		print "File Problem"
+else:
+	tasks = {}
 
 user_input = ""
 
