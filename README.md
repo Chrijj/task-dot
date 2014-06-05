@@ -6,9 +6,10 @@
 - pickle, datetime, os
 
 ##### >> Known Issues
-- file i/o temporarily disabled
 
 ##### // revision history
+
+ - 0.9 - re-instated file io 
 
  - 0.8 - began switch to object orientation, file input/ouput temporarily disabled
 
@@ -30,13 +31,16 @@
 
 
 ##### // upcoming additions
- - adjust style and flow to be object oriented
  - switch to cPickle as pickle
 
 
 #####// future development
- - track task completion
+ - track task completion status
  - useful task date comparisons
- - line code with PEP8 standards
+ - add a gui instead of command line
+ - multiple task list support
+ - task list summary
+ - look into if defaultdict offers any advantages
+ - adjust code in line with PEP8 standards
  - port to python 3
  

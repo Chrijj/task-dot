@@ -3,27 +3,13 @@
 # revision 0.8
 
 from datetime import date
-#import pickle
-#import os
+import pickle
+import os
 
 print
 print '*' * 15
 print "Task List Manager"
 print '*' * 15
-
-#test if file exists, if so import data
-# if os.path.isfile("myfile.pkl"):
-# 	try:
-# 		pkl_file = open('myfile.pkl', 'rb')
-# 		tasks = pickle.load(pkl_file) 
-# 		pkl_file.close()
-# 	except OSError:
-# 		print "File Problem"
-# else:
-# 	tasks = {}
-
-user_input = ""
-
 
 class tasks(object):
 	def __init__(self, name):
@@ -50,8 +36,7 @@ class tasks(object):
 			print task, "has been removed from the task list"
 		else:
 			print task, "is not in the task list"
-
-	# def __str__(self):
+	#def __str__(self):
 	# 	if self.task_list:
 	# 		sorted_tasks = self.task_list.items()
 	# 		sorted_tasks.sort()
@@ -66,18 +51,33 @@ class tasks(object):
 	# 		return "No Tasks currently in list"
 
 
-tasks = tasks("taskList")
+#test if file exists, if so import data
+if os.path.isfile("myfile.pkl"):
+	try:
+		pkl_file = open('myfile.pkl', 'rb')
+		my_tasks = pickle.load(pkl_file) 
+		pkl_file.close()
+	except OSError:
+		print "File Problem"
+else:
+	my_tasks = tasks("taskList")
+
+user_input = ""
+
 
 def script_response(user_input):
 	if user_input == 'n':
 		user_input = raw_input("Enter the task: ")
-		tasks.addTask(user_input)
+		my_tasks.addTask(user_input)
 	elif user_input == 'd':
 		user_input = raw_input("Enter the task: ")
-		tasks.removeTask(user_input)
+		my_tasks.removeTask(user_input)
 	elif user_input == 'l':
-		tasks.listTasks()
+		my_tasks.listTasks()
 	elif user_input == 'e':
+		output = open('myfile.pkl', 'wb')
+		pickle.dump(my_tasks, output)
+		output.close()	
 		exit
 
 while user_input != 'e':
