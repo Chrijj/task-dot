@@ -9,29 +9,31 @@
 
 ##### // revision history
 
- - 0.9 - re-instated file io 
+ - a1.0 - prefaced revision numbers to represent alpha status, renamed file, changed to cPickle for speed, adjusted print formatting and file io names
 
- - 0.8 - began switch to object orientation, file input/ouput temporarily disabled
+ - a0.9 - re-instated file io 
 
- - 0.7 - added test for file existence before importing using os library
+ - a0.8 - began switch to object orientation, file input/ouput temporarily disabled
 
- - 0.6 - adjusted printing of task list to loop through all entries, indented machine responses to improve readability, fixed file handling bug
+ - a0.7 - added test for file existence before importing using os library
 
- - 0.5 - pickle module added, added file handling for saving data between sessions
+ - a0.6 - adjusted printing of task list to loop through all entries, indented machine responses to improve readability, fixed file handling bug
 
- - 0.4 - main control flow changed to a function call, changed ifs to use boolean value of a list
+ - a0.5 - pickle module added, added file handling for saving data between sessions
 
- - 0.3 - datetime module useage added, tasks changed from a list to a dict; task name: todays date
+ - a0.4 - main control flow changed to a function call, changed ifs to use boolean value of a list
 
- - 0.2 - added option to remove tasks
+ - a0.3 - datetime module useage added, tasks changed from a list to a dict; task name: todays date
 
- - 0.1 - formatting and consistency updates
+ - a0.2 - added option to remove tasks
 
- - 0.0 - very basic list input
+ - a0.1 - formatting and consistency updates
+
+ - a0.0 - very basic list input
 
 
 ##### // upcoming additions
- - switch to cPickle as pickle
+
 
 
 #####// future development
@@ -42,5 +44,7 @@
  - task list summary
  - look into if defaultdict offers any advantages
  - adjust code in line with PEP8 standards
+ - adjust print statements to work in python 3
  - port to python 3
+ - create a proper testing suite
  

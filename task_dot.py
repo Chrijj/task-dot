@@ -1,6 +1,6 @@
 # basic task list script
-# currently python 2.7
-# revision 0.8
+# python 2.7
+# revision a1.0
 
 from datetime import date
 import pickle
@@ -36,6 +36,7 @@ class tasks(object):
 			print task, "has been removed from the task list"
 		else:
 			print task, "is not in the task list"
+
 	#def __str__(self):
 	# 	if self.task_list:
 	# 		sorted_tasks = self.task_list.items()
@@ -52,17 +53,15 @@ class tasks(object):
 
 
 #test if file exists, if so import data
-if os.path.isfile("myfile.pkl"):
+if os.path.isfile("task_data.pkl"):
 	try:
-		pkl_file = open('myfile.pkl', 'rb')
+		pkl_file = open('task_data.pkl', 'rb')
 		my_tasks = pickle.load(pkl_file) 
 		pkl_file.close()
 	except OSError:
-		print "File Problem"
+		print "Problem loading from file"
 else:
 	my_tasks = tasks("taskList")
-
-user_input = ""
 
 
 def script_response(user_input):
@@ -75,10 +74,12 @@ def script_response(user_input):
 	elif user_input == 'l':
 		my_tasks.listTasks()
 	elif user_input == 'e':
-		output = open('myfile.pkl', 'wb')
+		output = open('task_data.pkl', 'wb')
 		pickle.dump(my_tasks, output)
 		output.close()	
 		exit
+
+user_input = ""
 
 while user_input != 'e':
 	print
