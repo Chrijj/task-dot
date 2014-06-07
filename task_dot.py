@@ -1,9 +1,9 @@
 # basic task list script
 # python 2.7
-# revision a1.0
+# revision a1.1
 
 from datetime import date
-import pickle
+import cPickle as pickle
 import os
 
 print
@@ -21,47 +21,36 @@ class tasks(object):
 			for task, date in self.task_list.items():
 				print "\t", task, ":", date
 		else:
-			print "No tasks currently in list"
+			print "\t No tasks currently in list"
 
 	def addTask(self, task):
 		if task not in self.task_list:
 			self.task_list[task] = date.today()
-			print task, "has been added to the task list"
+			print "\t", task, "has been added to the task list"
 		else:
-			print task, "is already in the task list"
+			print "\t", task, "is already in the task list"
 
 	def removeTask(self, task):
 		if task in self.task_list:
 			del self.task_list[task]
-			print task, "has been removed from the task list"
+			print "\t", task, "has been removed from the task list"
 		else:
-			print task, "is not in the task list"
+			print "\t", task, "is not in the task list"
 
-	#def __str__(self):
-	# 	if self.task_list:
-	# 		sorted_tasks = self.task_list.items()
-	# 		sorted_tasks.sort()
-	# 		printed_tasks = []
-	# 		for task, date in sorted_tasks:
-	# 			printed_tasks.append(task)
-	# 			printed_tasks.append(":")
-	# 			printed_tasks.append(date)
-	# 			printed_tasks.append("\n")
-	# 		return ''.join(printed_tasks)
-	# 	else:
-	# 		return "No Tasks currently in list"
-
+	def __str__(self):
+		return self.name + " : " + str(len(self.task_list)) + " items"
+		
 
 #test if file exists, if so import data
 if os.path.isfile("task_data.pkl"):
 	try:
-		pkl_file = open('task_data.pkl', 'rb')
-		my_tasks = pickle.load(pkl_file) 
-		pkl_file.close()
+		pkl_in = open('task_data.pkl', 'rb')
+		my_tasks = pickle.load(pkl_in) 
+		pkl_in.close()
 	except OSError:
 		print "Problem loading from file"
 else:
-	my_tasks = tasks("taskList")
+	my_tasks = tasks("Basic List")
 
 
 def script_response(user_input):
@@ -73,10 +62,12 @@ def script_response(user_input):
 		my_tasks.removeTask(user_input)
 	elif user_input == 'l':
 		my_tasks.listTasks()
+	elif user_input == 'p':
+		print my_tasks
 	elif user_input == 'e':
-		output = open('task_data.pkl', 'wb')
-		pickle.dump(my_tasks, output)
-		output.close()	
+		pkl_out = open('task_data.pkl', 'wb')
+		pickle.dump(my_tasks, pkl_out)
+		pkl_out.close()	
 		exit
 
 user_input = ""
@@ -85,7 +76,7 @@ while user_input != 'e':
 	print
 	print '-' * 15
 	print "Instructions:"
-	user_input = raw_input("Press 'l' to list tasks, n' to add new, 'd' to delete or 'e' to exit\n.:")
+	user_input = raw_input("Press 'l' to list tasks, 'p' for a summary, 'n' to add new, 'd' to delete or 'e' to exit\n.:")
 	script_response(user_input)
 
 

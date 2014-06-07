@@ -9,6 +9,8 @@
 
 ##### // revision history
 
+ - a1.1 - added __str__ representation to tasks class
+
  - a1.0 - prefaced revision numbers to represent alpha status, renamed file, changed to cPickle for speed, adjusted print formatting and file io names
 
  - a0.9 - re-instated file io 
@@ -33,6 +35,7 @@
 
 
 ##### // upcoming additions
+ - remove myfile from git
 
 
 
@@ -47,4 +50,5 @@
  - adjust print statements to work in python 3
  - port to python 3
  - create a proper testing suite
+ - properly comment classes and functions
  
