@@ -62,7 +62,7 @@ def script_response(user_input):
 		my_tasks.removeTask(user_input)
 	elif user_input == 'l':
 		my_tasks.listTasks()
-	elif user_input == 'p':
+	elif user_input == 's':
 		print my_tasks
 	elif user_input == 'e':
 		pkl_out = open('task_data.pkl', 'wb')
@@ -76,7 +76,7 @@ while user_input != 'e':
 	print
 	print '-' * 15
 	print "Instructions:"
-	user_input = raw_input("Press 'l' to list tasks, 'p' for a summary, 'n' to add new, 'd' to delete or 'e' to exit\n.:")
+	user_input = raw_input("Press 'l' to list tasks, 's' for a summary, 'n' to add new, 'd' to delete or 'e' to exit\n.:")
 	script_response(user_input)
 
 
