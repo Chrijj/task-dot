@@ -35,8 +35,6 @@
 
 
 ##### // upcoming additions
- - remove myfile from git
-
 
 
 #####// future development
