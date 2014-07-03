@@ -9,6 +9,8 @@
 
 ##### // revision history
 
+ - a1.2 - improved file io, improved layout and flow of text, adjusted main control loop
+
  - a1.1 - added __str__ representation to tasks class
 
  - a1.0 - prefaced revision numbers to represent alpha status, renamed file, changed to cPickle for speed, adjusted print formatting and file io names
